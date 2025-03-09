@@ -34,7 +34,7 @@ export default async function Dashboard() {
                 <p className="text-2xl">
                   $
                   {expenses
-                    .reduce((sum, expense) => sum + expense.amount, 0)
+                    .reduce((sum: number, expense) => sum + expense.amount, 0)
                     .toFixed(2)}
                 </p>
               </div>

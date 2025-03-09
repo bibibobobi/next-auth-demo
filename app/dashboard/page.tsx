@@ -3,6 +3,15 @@ import Link from "next/link";
 import { createExpenseAction, getUserExpensesAction } from "../lib/action";
 import Header from "../components/header";
 
+type Expense = {
+  id: string;
+  amount: number;
+  description: string;
+  userId: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
 export default async function Dashboard() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
@@ -34,7 +43,10 @@ export default async function Dashboard() {
                 <p className="text-2xl">
                   $
                   {expenses
-                    .reduce((sum: number, expense) => sum + expense.amount, 0)
+                    .reduce(
+                      (sum: number, expense: Expense) => sum + expense.amount,
+                      0
+                    )
                     .toFixed(2)}
                 </p>
               </div>

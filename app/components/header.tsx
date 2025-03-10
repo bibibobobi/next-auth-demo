@@ -19,7 +19,9 @@ export default async function Header() {
           <Image
             src={user.picture}
             alt={user.given_name || "User"}
-            className="w-8 h-8 rounded-full"
+            className="rounded-full"
+            width={32}
+            height={32}
           />
         ) : (
           <div className="w-8 h-8 rounded-full bg-gray-300"></div>

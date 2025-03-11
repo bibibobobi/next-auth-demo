@@ -1,16 +1,18 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  getKindeServerSession,
+  LoginLink,
   LogoutLink,
   RegisterLink,
-  LoginLink,
-} from "@kinde-oss/kinde-auth-nextjs/server";
+} from "@kinde-oss/kinde-auth-nextjs";
 
-export default async function Header() {
-  const { isAuthenticated, getUser } = getKindeServerSession();
-  const isLoggedIn = await isAuthenticated();
-  const user = await getUser();
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+
+export default function Header() {
+  const { isAuthenticated, getUser } = useKindeBrowserClient();
+  const isLoggedIn = isAuthenticated;
+  const user = getUser();
 
   return (
     <header className="flex items-center justify-between p-4 bg-green-100">
